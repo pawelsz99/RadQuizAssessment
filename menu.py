@@ -16,7 +16,7 @@ from english import *
 from ultimate import *
 
 
-# I don't know where I have to put "self" 
+# I don't know where I have to put "self"
 # before a variable in a class in Python,
 # I tried to remove it here like in the other
 # classes but for some reason it stopped working.
@@ -132,9 +132,6 @@ class Menu:
                                   command=self.ultimate)
         UltimateTest.bg = "#DB4692"
         UltimateTest.font = "sans-serif"
-
-    def ph(self):
-        print("Hello")
 
     def mathematics(self):
         mathematics = Mathematics(self.app)
