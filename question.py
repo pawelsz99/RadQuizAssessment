@@ -10,6 +10,7 @@
 
 import random
 
+
 class Question:
     """object holds the question text and 4 answers, 
         Remember to put the correct answers FIRST
@@ -42,7 +43,20 @@ class Question:
         Returns:
             array[4]: question in random order
         """
-
         answers_list = [self.a1_text, self.a2_text, self.a3_text, self.a4_text]
         random.shuffle(answers_list)
         return answers_list
+
+    def is_answer_correct(self, answer):
+        """function checks if the answer is correct
+
+        Args:
+            answer (text): the text from the answer button
+
+        Returns:
+            boolean: True if the answer is correct, False if not
+        """
+        if answer == self.a1_text:
+            return True
+        else:
+            return False

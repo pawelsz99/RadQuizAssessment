@@ -132,28 +132,28 @@ class Mathematics:
                                         align="left",
                                         width=100,
                                         height=70,
-                                        command=self.next_question)
+                                        command=self.check_a1)
         self.math_answer_1.bg = "#54C03D"
         self.math_answer_1.font = "sans-serif"
         self.math_answer_2 = PushButton(mathematics_button_2,
                                         align="right",
                                         width=100,
                                         height=70,
-                                        command=self.next_question)
+                                        command=self.check_a2)
         self.math_answer_2.bg = "#2D73A9"
         self.math_answer_2.font = "sans-serif"
         self.math_answer_3 = PushButton(mathematics_button_3,
                                         align="left",
                                         width=100,
                                         height=70,
-                                        command=self.next_question)
+                                        command=self.check_a3)
         self.math_answer_3.bg = "#DB4692"
         self.math_answer_3.font = "sans-serif"
         self.math_answer_4 = PushButton(mathematics_button_4,
                                         align="right",
                                         width=100,
                                         height=70,
-                                        command=self.next_question)
+                                        command=self.check_a4)
         self.math_answer_4.bg = "#FFFA13"
         self.math_answer_4.font = "sans-serif"
 
@@ -187,5 +187,62 @@ class Mathematics:
         self.math_question_number.value = "Question Num: " + \
             str(order_counter) + "/10"
 
-        # delete this later
-        self.score += 1
+    def check_a1(self):
+        """this function is called after pressing answer button 1
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.math_answer_1.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a2(self):
+        """this function is called after pressing answer button 2
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.math_answer_2.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a3(self):
+        """this function is called after pressing answer button 3
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.math_answer_3.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a4(self):
+        """this function is called after pressing answer button 4
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.math_answer_4.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
