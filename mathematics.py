@@ -32,7 +32,7 @@ order_counter = 0
 
 class Mathematics:
     def __init__(self, app):
-
+        self.score = 0
         app = app
 
         # after each start of the quiz window,
@@ -160,22 +160,32 @@ class Mathematics:
         self.next_question()
 
     def next_question(self):
+        # --- update question and answers --- #
         global order_counter
         q = list_questions[questions_order[order_counter]].get_q_text()
-        # randomizing the answers 
-        answers = list_questions[questions_order[order_counter]].get_randomize_answers()
+
+        # randomizing the answers
+        answers = list_questions[questions_order[order_counter]
+                                 ].get_randomize_answers()
         a1 = answers[0]
         a2 = answers[1]
         a3 = answers[2]
         a4 = answers[3]
 
         self.math_question.value = q
-
         self.math_answer_1.text = a1
         self.math_answer_2.text = a2
         self.math_answer_3.text = a3
         self.math_answer_4.text = a4
 
+        # set the counter for the next question
         order_counter += 1
 
-    
+        # --- update score and question number --- #
+
+        self.math_question_score.value = "Score: " + str(self.score)
+        self.math_question_number.value = "Question Num: " + \
+            str(order_counter) + "/10"
+
+        # delete this later
+        self.score += 1
