@@ -10,6 +10,7 @@
 
 from guizero import App, Text, PushButton, Box, Window
 from question import Question
+import random
 
 list_questions = {
     1: Question("An empty container weighs 120g. When 50 lollipops were put in it the weight was 870g. What is the weight of one lollipop?", "15 Grams", "Text q1a2", "Text q1a3", "Text q1a4"),
@@ -31,9 +32,16 @@ order_counter = 0
 
 class Mathematics:
     def __init__(self, app):
+
         app = app
+
+        # after each start of the quiz window,
+        # reset the counter and randomize the question order
         global order_counter
         order_counter = 0
+        global questions_order
+        random.shuffle(questions_order)
+
         #------------------------------Mathematics Window-----------------------------------#
 
         math_window = Window(app, width=700, height=700, bg="#FFED7C")
@@ -154,10 +162,12 @@ class Mathematics:
     def next_question(self):
         global order_counter
         q = list_questions[questions_order[order_counter]].get_q_text()
-        a1 = list_questions[questions_order[order_counter]].get_a1_text()
-        a2 = list_questions[questions_order[order_counter]].get_a2_text()
-        a3 = list_questions[questions_order[order_counter]].get_a3_text()
-        a4 = list_questions[questions_order[order_counter]].get_a4_text()
+        # randomizing the answers 
+        answers = list_questions[questions_order[order_counter]].get_randomize_answers()
+        a1 = answers[0]
+        a2 = answers[1]
+        a3 = answers[2]
+        a4 = answers[3]
 
         self.math_question.value = q
 
@@ -167,3 +177,5 @@ class Mathematics:
         self.math_answer_4.text = a4
 
         order_counter += 1
+
+    

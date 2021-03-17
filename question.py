@@ -8,6 +8,7 @@
 # Copyright:   (c) OnlyChads 2020
 # -------------------------------------------------------------------------------
 
+import random
 
 class Question:
     """object holds the question text and 4 answers, 
@@ -35,3 +36,13 @@ class Question:
 
     def get_a4_text(self):
         return self.a4_text
+
+    def get_randomize_answers(self):
+        """
+        Returns:
+            array[4]: question in random order
+        """
+
+        answers_list = [self.a1_text, self.a2_text, self.a3_text, self.a4_text]
+        random.shuffle(answers_list)
+        return answers_list
