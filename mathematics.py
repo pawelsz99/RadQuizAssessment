@@ -116,10 +116,9 @@ class Mathematics:
 
         # Question Text
         self.math_question = TextBox(mathematics_container_2,
-                                  text="Question",
-                                  width=100,
-                                  height=100
-                                  ,multiline=True)
+                                     text="Question",
+                                     width=100,
+                                     height=100, multiline=True)
         self.math_question.bg = "#FF8108"
         self.math_question.font = "sans-serif"
 
@@ -162,8 +161,21 @@ class Mathematics:
         self.next_question()
 
     def next_question(self):
-        # ------------------- update question and answers --------------------- #
         global order_counter
+
+        # ----------------------- check if end of the quiz ----------------------------- #
+        if order_counter >= 10:
+            # display the final score
+            # maybe something that looks better than popup?
+            self.math_window.info(
+                "Congratulation", "Your score: " + str(self.score)+" /10")
+
+            # in the later stages remember to pass info
+            # if the user has passed the test
+            # to unlock the ultimate test
+            self.math_window.destroy()
+
+        # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
 
         # randomizing the answers
@@ -188,17 +200,6 @@ class Mathematics:
         self.math_question_score.value = "Score: " + str(self.score)
         self.math_question_number.value = "Question Num: " + \
             str(order_counter) + "/10"
-
-        # ----------------------- check if end of the quiz ----------------------------- #
-        if order_counter >= 10:
-            # display the final score 
-            # maybe something that looks better than popup? 
-            self.math_window.info("Congratulation","Your score: "+ str(self.score)+" /10")
-            
-            # in the later stages remember to pass info 
-            # if the user has passed the test
-            # to unlock the ultimate test 
-            self.math_window.destroy()
 
     def check_a1(self):
         """this function is called after pressing answer button 1

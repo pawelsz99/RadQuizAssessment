@@ -11,6 +11,7 @@
 from guizero import App, Text, PushButton, Box, Window
 
 from question import Question
+import random
 
 list_questions = {
     1: Question("1.	What does each star on the flag of the United States stand for?", "States", "Ex-Presidents", "Cities", "Universities"),
@@ -19,39 +20,49 @@ list_questions = {
     4: Question("4.	In which country is the worlds highest waterfall?", "USA", "UK", "Venezuela", "Australia"),
     5: Question("5.	What is the highest mountain in Britain?", "Ben Nevis", "Ben Macdui", "Braeriach", "Aonach Mor"),
     6: Question("6.	What is the unit of currency in Spain?", "Pounds", "Euros", "Dollars", "Peseta"),
-    7: Question("Which country is it? (pic)", "Brazil", "Mexica", "Argentina", "Venezuela"),
-    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Artic Ocean", "Atlantic Ocean", "Indian Ocean"),
-    9: Question("Which counrty has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium"),
+    7: Question("Which country is it? (pic)", "Brazil", "Mexico", "Argentina", "Venezuela"),
+    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Arctic Ocean", "Atlantic Ocean", "Indian Ocean"),
+    9: Question("Which country has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium"),
     10: Question("Where is this building located? (pic)", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-counter = 0
+order_counter = 0
 # this will be used in randomizing questions order
 
 
 class Geography:
     def __init__(self, app):
+        self.score = 0
         app = app
+
+        # after each start of the quiz window,
+        # reset the counter and randomize the question order
+        global order_counter
+        order_counter = 0
+        global questions_order
+        random.shuffle(questions_order)
+
         #-----------------------------Geography Window--------------------------------#
 
-        geography_window = Window(app, width=700, height=700, bg="#FFED7C")
+        self.geography_window = Window(
+            app, width=700, height=700, bg="#FFED7C")
 
         # Quiz contantainers from top to bottom; geography_container_1 = Image container, geography_container_2 = Question container, geography_container_3 = filler container, geography_container_4 = upper answer button container, geography_container_5 = filler container, geography_container_6 = lower answer button container, geography_container_7 = bottom container with score and question
         geography_container_1 = Box(
-            geography_window, width=700, height=250, border=2)
+            self.geography_window, width=700, height=250, border=2)
         geography_container_2 = Box(
-            geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100, border=2)
         geography_container_3 = Box(
-            geography_window, width=700, height=25, border=2)
+            self.geography_window, width=700, height=25, border=2)
         geography_container_4 = Box(
-            geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100, border=2)
         geography_container_5 = Box(
-            geography_window, width=700, height=25, border=2)
+            self.geography_window, width=700, height=25, border=2)
         geography_container_6 = Box(
-            geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100, border=2)
         geography_container_7 = Box(
-            geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100, border=2)
 
         # containers where the upper buttons are positioned
         geography_filler_box_1 = Box(geography_container_4,
@@ -123,46 +134,131 @@ class Geography:
                                              align="left",
                                              width=100,
                                              height=70,
-                                             command=self.next_question)
+                                             command=self.check_a1)
         self.geography_answer_1.bg = "#54C03D"
         self.geography_answer_1.font = "sans-serif"
         self.geography_answer_2 = PushButton(geography_button_2,
                                              align="right",
                                              width=100,
                                              height=70,
-                                             command=self.next_question)
+                                             command=self.check_a2)
         self.geography_answer_2.bg = "#2D73A9"
         self.geography_answer_2.font = "sans-serif"
         self.geography_answer_3 = PushButton(geography_button_3,
                                              align="left",
                                              width=100,
                                              height=70,
-                                             command=self.next_question)
+                                             command=self.check_a3)
         self.geography_answer_3.bg = "#DB4692"
         self.geography_answer_3.font = "sans-serif"
         self.geography_answer_4 = PushButton(geography_button_4,
                                              align="right",
                                              width=100,
                                              height=70,
-                                             command=self.next_question)
+                                             command=self.check_a4)
         self.geography_answer_4.bg = "#FFFA13"
         self.geography_answer_4.font = "sans-serif"
 
         self.next_question()
 
     def next_question(self):
-        global counter
-        q = list_questions[questions_order[counter]].get_q_text()
-        a1 = list_questions[questions_order[counter]].get_a1_text()
-        a2 = list_questions[questions_order[counter]].get_a2_text()
-        a3 = list_questions[questions_order[counter]].get_a3_text()
-        a4 = list_questions[questions_order[counter]].get_a4_text()
+        global order_counter
+
+        # ----------------------- check if end of the quiz ----------------------------- #
+        if order_counter >= 10:
+            # display the final score
+            # maybe something that looks better than popup?
+            self.geography_window.info(
+                "Congratulation", "Your score: " + str(self.score)+" /10")
+
+            # in the later stages remember to pass info
+            # if the user has passed the test
+            # to unlock the ultimate test
+            self.geography_window.destroy()
+
+        # ------------------- update question and answers --------------------- #
+
+        q = list_questions[questions_order[order_counter]].get_q_text()
+
+        # randomizing the answers
+        answers = list_questions[questions_order[order_counter]
+                                 ].get_randomize_answers()
+        a1 = answers[0]
+        a2 = answers[1]
+        a3 = answers[2]
+        a4 = answers[3]
 
         self.geography_question.value = q
-
         self.geography_answer_1.text = a1
         self.geography_answer_2.text = a2
         self.geography_answer_3.text = a3
         self.geography_answer_4.text = a4
 
-        counter += 1
+        # set the counter for the next question
+        order_counter += 1
+
+        # ----------------------- update score and question number --------------------- #
+
+        self.geography_question_score.value = "Score: " + str(self.score)
+        self.geography_question_number.value = "Question Num: " + \
+            str(order_counter) + "/10"
+
+    def check_a1(self):
+        """this function is called after pressing answer button 1
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.geography_answer_1.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a2(self):
+        """this function is called after pressing answer button 2
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.geography_answer_2.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a3(self):
+        """this function is called after pressing answer button 3
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.geography_answer_3.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a4(self):
+        """this function is called after pressing answer button 4
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.geography_answer_4.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
