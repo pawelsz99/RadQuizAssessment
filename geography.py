@@ -13,16 +13,16 @@ from guizero import App, Text, PushButton, Box, Window
 from question import Question
 
 list_questions = {
-    1: Question("Text Q1", "Text q1a1", "Text q1a2", "Text q1a3", "Text q1a4"),
-    2: Question("Text Q2", "Text q2a1", "Text q2a2", "Text q2a3", "Text q2a4"),
-    3: Question("Text Q3", "Text q3a1", "Text q3a2", "Text q3a3", "Text q3a4"),
-    4: Question("Text Q4", "Text q4a1", "Text q4a2", "Text q4a3", "Text q4a4"),
-    5: Question("Text Q5", "Text q5a1", "Text q5a2", "Text q5a3", "Text q5a4"),
-    6: Question("Text Q6", "Text q6a1", "Text q6a2", "Text q6a3", "Text q6a4"),
-    7: Question("Text Q7", "Text q7a1", "Text q7a2", "Text q7a3", "Text q7a4"),
-    8: Question("Text Q8", "Text q8a1", "Text q8a2", "Text q8a3", "Text q8a4"),
-    9: Question("Text Q9", "Text q9a1", "Text q9a2", "Text q9a3", "Text q9a4"),
-    10: Question("Text Q10", "Text q10a1", "Text q10a2", "Text q10a3", "Text q10a4")
+    1: Question("1.	What does each star on the flag of the United States stand for?", "States", "Ex-Presidents", "Cities", "Universities"),
+    2: Question("2.	What colour is the spot in the middle of the Japanese flag?", "Red", "White", "Pink", "Colar"),
+    3: Question("3.	Baku is the capital city of which eastern European country?", "Georgia", "Azerbaijan", "Russia", "Belarus"),
+    4: Question("4.	In which country is the worlds highest waterfall?", "USA", "UK", "Venezuela", "Australia"),
+    5: Question("5.	What is the highest mountain in Britain?", "Ben Nevis", "Ben Macdui", "Braeriach", "Aonach Mor"),
+    6: Question("6.	What is the unit of currency in Spain?", "Pounds", "Euros", "Dollars", "Peseta"),
+    7: Question("Which country is it? (pic)", "Brazil", "Mexica", "Argentina", "Venezuela"),
+    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Artic Ocean", "Atlantic Ocean", "Indian Ocean"),
+    9: Question("Which counrty has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium"),
+    10: Question("Where is this building located? (pic)", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

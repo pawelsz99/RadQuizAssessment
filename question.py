@@ -38,6 +38,9 @@ class Question:
     def get_a4_text(self):
         return self.a4_text
 
+    def get_q_image(self):
+      pass    
+
     def get_randomize_answers(self):
         """
         Returns:

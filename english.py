@@ -13,16 +13,16 @@ from guizero import App, Text, PushButton, Box, Window
 from question import Question
 
 list_questions = {
-    1: Question("Text Q1", "Text q1a1", "Text q1a2", "Text q1a3", "Text q1a4"),
-    2: Question("Text Q2", "Text q2a1", "Text q2a2", "Text q2a3", "Text q2a4"),
-    3: Question("Text Q3", "Text q3a1", "Text q3a2", "Text q3a3", "Text q3a4"),
-    4: Question("Text Q4", "Text q4a1", "Text q4a2", "Text q4a3", "Text q4a4"),
-    5: Question("Text Q5", "Text q5a1", "Text q5a2", "Text q5a3", "Text q5a4"),
-    6: Question("Text Q6", "Text q6a1", "Text q6a2", "Text q6a3", "Text q6a4"),
-    7: Question("Text Q7", "Text q7a1", "Text q7a2", "Text q7a3", "Text q7a4"),
-    8: Question("Text Q8", "Text q8a1", "Text q8a2", "Text q8a3", "Text q8a4"),
-    9: Question("Text Q9", "Text q9a1", "Text q9a2", "Text q9a3", "Text q9a4"),
-    10: Question("Text Q10", "Text q10a1", "Text q10a2", "Text q10a3", "Text q10a4")
+    1: Question("Can you swim?", "In a pool", "Yes, I can", "Very good", "Butterfly"),
+    2: Question("Did he go to work or to school?", "English lesson", "No, he doesn't", "At 3:00 PM", "To work"),
+    3: Question("Has your class finished? ", "Yes, it has", "In five minutes", "It's English", "Yes, it done"),
+    4: Question("Where is my pen?", "Because it's lost", "On the table", "No, you don't", "Take this"),
+    5: Question("Who did you visit?", "I visit my mother", "Yes, I did", "I visited Judy", "I was swimming"),
+    6: Question("Shall we go to your place or mine?", "My place", "It is yours", "Yes, we shall", "No, we haven't"),
+    7: Question("When will Lucy arrive?", "At 7 PM", "No, she won't", "From France", "Yesterday"),
+    8: Question("Who called here so late?", "It's midnight", "It was Ryan", "Yes, I called", "Let's order pizza"),
+    9: Question("Do you want to watch a movie?", "At the cinema", "Yes, I watched it", "No, I don't", "Yes, I has"),
+    10: Question("Have you done the laundry?", "Yes, I do", "On Wednesday", "No, I haven't", "Tomorrow")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
