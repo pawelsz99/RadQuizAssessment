@@ -44,23 +44,23 @@ class Mathematics:
 
         #------------------------------Mathematics Window-----------------------------------#
 
-        math_window = Window(app, width=850, height=700, bg="#FFED7C")
+        self.math_window = Window(app, width=850, height=700, bg="#FFED7C")
 
         # Quiz contantainers from top to bottom; mathematics_container_1 = Image container, mathematics_container_2 = Question container, mathematics_container_3 = filler container, mathematics_container_4 = upper answer button container, mathematics_container_5 = filler container, mathematics_container_6 = lower answer button container, mathematics_container_7 = bottom container with score and question
         mathematics_container_1 = Box(
-            math_window, width=850, height=250, border=2)
+            self.math_window, width=850, height=250, border=2)
         mathematics_container_2 = Box(
-            math_window, width=850, height=100, border=2)
+            self.math_window, width=850, height=100, border=2)
         mathematics_container_3 = Box(
-            math_window, width=700, height=25, border=2)
+            self.math_window, width=700, height=25, border=2)
         mathematics_container_4 = Box(
-            math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100, border=2)
         mathematics_container_5 = Box(
-            math_window, width=700, height=25, border=2)
+            self.math_window, width=700, height=25, border=2)
         mathematics_container_6 = Box(
-            math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100, border=2)
         mathematics_container_7 = Box(
-            math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100, border=2)
 
         # containers where the upper buttons are positioned
         math_filler_box_1 = Box(mathematics_container_4,
@@ -188,6 +188,17 @@ class Mathematics:
         self.math_question_score.value = "Score: " + str(self.score)
         self.math_question_number.value = "Question Num: " + \
             str(order_counter) + "/10"
+
+        # ----------------------- check if end of the quiz ----------------------------- #
+        if order_counter >= 10:
+            # display the final score 
+            # maybe something that looks better than popup? 
+            self.math_window.info("Congratulation","Your score: "+ str(self.score)+" /10")
+            
+            # in the later stages remember to pass info 
+            # if the user has passed the test
+            # to unlock the ultimate test 
+            self.math_window.destroy()
 
     def check_a1(self):
         """this function is called after pressing answer button 1
