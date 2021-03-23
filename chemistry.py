@@ -8,22 +8,24 @@
 # Copyright:   (c) OnlyChads 2020
 # -------------------------------------------------------------------------------
 
-from guizero import App, Text, PushButton, Box, Window
+from guizero import App, Text, PushButton, Box, Window, Picture
 
 from question import Question
 import random
 
+img_dict = {0:"imgs/img_blank.PNG", 7: "imgs/chem_q7.PNG", 9:"imgs/chem_q9.PNG", 10:"imgs/chem_q10.PNG"}
+
 list_questions = {
-    1: Question("Text Q1", "Text q1a1", "Text q1a2", "Text q1a3", "Text q1a4"),
-    2: Question("Text Q2", "Text q2a1", "Text q2a2", "Text q2a3", "Text q2a4"),
-    3: Question("Text Q3", "Text q3a1", "Text q3a2", "Text q3a3", "Text q3a4"),
-    4: Question("Text Q4", "Text q4a1", "Text q4a2", "Text q4a3", "Text q4a4"),
-    5: Question("Text Q5", "Text q5a1", "Text q5a2", "Text q5a3", "Text q5a4"),
-    6: Question("Text Q6", "Text q6a1", "Text q6a2", "Text q6a3", "Text q6a4"),
-    7: Question("Text Q7", "Text q7a1", "Text q7a2", "Text q7a3", "Text q7a4"),
-    8: Question("Text Q8", "Text q8a1", "Text q8a2", "Text q8a3", "Text q8a4"),
-    9: Question("Text Q9", "Text q9a1", "Text q9a2", "Text q9a3", "Text q9a4"),
-    10: Question("Text Q10", "Text q10a1", "Text q10a2", "Text q10a3", "Text q10a4")
+    1: Question("The term ‘renal’ refers to which organs?", "Kidney", "Liver", "Stomach", "Appendix", ""),
+    2: Question("Botany is the study of what life form?", "Plants", "Animals", "Insects ", "Humans", ""),
+    3: Question("What is the human body’s largest organ?", "Skin", "Liver", "Brain", "Spleen", ""),
+    4: Question("How many bones does an adult human have?", "206", "198", "176", "234", ""),
+    5: Question("What year was the first animal cloned?", "1640", "2015", "1996", "Has not happened yet", ""),
+    6: Question("Which food substance helps move waste through the body?", "Fibre", "Protein", "Carbohydrates", "Sugar", ""),
+    7: Question("Which part of body is this? ", "Liver", "Spleen", "Bladder", "Gall", ""),
+    8: Question("Ecosystem consists of …", "Biotic community", " Plants & Animals ", "Diffrent Species", "Various Insects", ""),
+    9: Question("Which organism would most likely come between the grass and the snake? ", "rabbit", "wheat", "coyote", "clover","" ),
+    10: Question("Which system is represented on picture ? ", "Digestive", "Eco System ", " Planetary ", " Elemntary System", "")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -116,6 +118,13 @@ class Chemistry:
 
         #-----------------------------Chemistry Widgets------------------------------#
 
+        # Question Image
+        self.chemistry_image = Picture(chemistry_container_1, 
+                                width=400,
+                                height=200,  
+                                image=img_dict.get(0)         
+                                )
+
         # Question Text
         self.chemistry_question = Text(chemistry_container_2,
                                        text="Question",
@@ -178,6 +187,18 @@ class Chemistry:
 
         # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
+
+        # Code below will retrive the current question number and it's image
+        questionNum = questions_order[order_counter]
+        if questionNum == 7:
+          self.chemistry_image.value= img_dict.get(7)
+        elif questionNum == 9:
+          self.chemistry_image.value= img_dict.get(9)
+        elif questionNum == 10:
+          self.chemistry_image.value= img_dict.get(10)
+        else:
+          self.chemistry_image.value= img_dict.get(0)
+
 
         # randomizing the answers
         answers = list_questions[questions_order[order_counter]
