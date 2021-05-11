@@ -13,7 +13,6 @@ from guizero import App, Text, PushButton, Box, Window, Picture
 from question import Question
 import random
 
-img_dict = {0:"imgs/img_blank.PNG", 7: "imgs/geo_q7.PNG", 8: "imgs/geo_q8.PNG", 9:"imgs/geo_q9.PNG", 10:"imgs/geo_q10.PNG"}
 
 list_questions = {
     1: Question("What does each star on the flag of the United States stand for?", "States", "Ex-Presidents", "Cities", "Universities", ""),
@@ -22,10 +21,10 @@ list_questions = {
     4: Question("In which country is the worlds highest waterfall?", "USA", "UK", "Venezuela", "Australia", ""),
     5: Question("What is the highest mountain in Britain?", "Ben Nevis", "Ben Macdui", "Braeriach", "Aonach Mor", ""),
     6: Question("What is the unit of currency in Spain?", "Pounds", "Euros", "Dollars", "Peseta", ""),
-    7: Question("Which country is it? (pic)", "Brazil", "Mexico", "Argentina", "Venezuela", ""),
-    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Arctic Ocean", "Atlantic Ocean", "Indian Ocean", ""),
-    9: Question("Which country has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium", ""),
-    10: Question("Where is this building located? (pic)", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain", "")
+    7: Question("Which country is it? (pic)", "Brazil", "Mexico", "Argentina", "Venezuela", "imgs/geo_q7.PNG"),
+    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Arctic Ocean", "Atlantic Ocean", "Indian Ocean", "imgs/geo_q8.PNG"),
+    9: Question("Which country has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium", "imgs/geo_q9.PNG"),
+    10: Question("Where is this building located? (pic)", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain", "imgs/geo_q10.PNG")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -119,11 +118,9 @@ class Geography:
         #-----------------------------Geography Widgets--------------------------------#
 
         # Question Image
-        self.geography_image = Picture(geography_container_1, 
-                                width=400,
-                                height=200,  
-                                image=img_dict.get(0)         
-                                )
+        self.geography_image = Picture(geography_container_1,
+                                       width=400,
+                                       height=200)
 
         # Question Text
         self.geography_question = Text(geography_container_2,
@@ -189,18 +186,12 @@ class Geography:
 
         q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # Code below will retrive the current question number and it's image
-        questionNum = questions_order[order_counter]
-        if questionNum == 7:
-          self.geography_image.value= img_dict.get(7)
-        elif questionNum == 8:
-          self.geography_image.value= img_dict.get(8)
-        elif questionNum == 9:
-          self.geography_image.value= img_dict.get(9)
-        elif questionNum == 10:
-          self.geography_image.value= img_dict.get(10)
+        # Code below will set an image for the question
+        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+            self.geography_image.value = "imgs/img_blank.PNG"
         else:
-          self.geography_image.value= img_dict.get(0)
+            self.geography_image.value = list_questions[questions_order[order_counter]
+                                                        ].get_img_parameter()
 
         # randomizing the answers
         answers = list_questions[questions_order[order_counter]

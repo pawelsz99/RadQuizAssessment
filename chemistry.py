@@ -13,7 +13,6 @@ from guizero import App, Text, PushButton, Box, Window, Picture
 from question import Question
 import random
 
-img_dict = {0:"imgs/img_blank.PNG", 7: "imgs/chem_q7.PNG", 9:"imgs/chem_q9.PNG", 10:"imgs/chem_q10.PNG"}
 
 list_questions = {
     1: Question("The term ‘renal’ refers to which organs?", "Kidney", "Liver", "Stomach", "Appendix", ""),
@@ -22,10 +21,10 @@ list_questions = {
     4: Question("How many bones does an adult human have?", "206", "198", "176", "234", ""),
     5: Question("What year was the first animal cloned?", "1640", "2015", "1996", "Has not happened yet", ""),
     6: Question("Which food substance helps move waste through the body?", "Fibre", "Protein", "Carbohydrates", "Sugar", ""),
-    7: Question("Which part of body is this? ", "Liver", "Spleen", "Bladder", "Gall", ""),
+    7: Question("Which part of body is this? ", "Liver", "Spleen", "Bladder", "Gall", "imgs/chem_q7.PNG"),
     8: Question("Ecosystem consists of …", "Biotic community", " Plants & Animals ", "Diffrent Species", "Various Insects", ""),
-    9: Question("Which organism would most likely come between the grass and the snake? ", "rabbit", "wheat", "coyote", "clover","" ),
-    10: Question("Which system is represented on picture ? ", "Digestive", "Eco System ", " Planetary ", " Elemntary System", "")
+    9: Question("Which organism would most likely come between the grass and the snake? ", "rabbit", "wheat", "coyote", "clover", "imgs/chem_q9.PNG"),
+    10: Question("Which system is represented on picture ? ", "Digestive", "Eco System ", " Planetary ", " Elementary System", "imgs/chem_q10.PNG")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -119,11 +118,9 @@ class Chemistry:
         #-----------------------------Chemistry Widgets------------------------------#
 
         # Question Image
-        self.chemistry_image = Picture(chemistry_container_1, 
-                                width=400,
-                                height=200,  
-                                image=img_dict.get(0)         
-                                )
+        self.chemistry_image = Picture(chemistry_container_1,
+                                       width=400,
+                                       height=200)
 
         # Question Text
         self.chemistry_question = Text(chemistry_container_2,
@@ -188,17 +185,12 @@ class Chemistry:
         # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # Code below will retrive the current question number and it's image
-        questionNum = questions_order[order_counter]
-        if questionNum == 7:
-          self.chemistry_image.value= img_dict.get(7)
-        elif questionNum == 9:
-          self.chemistry_image.value= img_dict.get(9)
-        elif questionNum == 10:
-          self.chemistry_image.value= img_dict.get(10)
+        # Code below will set an image for the question
+        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+            self.chemistry_image.value = "imgs/img_blank.PNG"
         else:
-          self.chemistry_image.value= img_dict.get(0)
-
+            self.chemistry_image.value = list_questions[questions_order[order_counter]
+                                                        ].get_img_parameter()
 
         # randomizing the answers
         answers = list_questions[questions_order[order_counter]

@@ -120,7 +120,7 @@ class Mathematics:
         self.math_image = Picture(mathematics_container_1,
                                   width=400,
                                   height=200,
-                                #   image=img_dict.get(9)
+                                  #   image=img_dict.get(9)
                                   )
 
         # Question Text
