@@ -13,12 +13,12 @@ from geography import list_questions as list_q_geo
 from mathematics import list_questions as list_q_math
 from chemistry import list_questions as list_q_chem
 from english import list_questions as list_q_eng
-from guizero import App, Text, PushButton, Box, Window
+from guizero import App, Text, PushButton, Box, Window, Picture
 import random
 
 list_questions = {}
 i = 1
-
+#getting ready the questions 
 for x in range(1, 11):
     list_questions[i] = list_q_math[x]
     i += 1
@@ -127,6 +127,11 @@ class Ultimate:
 
         #-----------------------------Ultimate Widgets--------------------------------#
 
+        # Question Image
+        self.ultimate_image = Picture(ultimate_container_1,
+                                  width=400,
+                                  height=200)
+
         # Question Text
         self.ultimate_question = Text(ultimate_container_2,
                                       text="Question",
@@ -190,7 +195,12 @@ class Ultimate:
         # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # TODO put here some img magic
+        # Code below will set an image for the question
+        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+            self.ultimate_image.value = "imgs/img_blank.PNG"
+        else:
+            self.ultimate_image.value = list_questions[questions_order[order_counter]
+                                                   ].get_img_parameter()
 
         # randomizing the answers
         answers = list_questions[questions_order[order_counter]

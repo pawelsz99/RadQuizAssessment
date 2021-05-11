@@ -119,9 +119,7 @@ class Mathematics:
         # Question Image
         self.math_image = Picture(mathematics_container_1,
                                   width=400,
-                                  height=200,
-                                  #   image=img_dict.get(9)
-                                  )
+                                  height=200)
 
         # Question Text
         self.math_question = TextBox(mathematics_container_2,
