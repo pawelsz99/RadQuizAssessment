@@ -64,3 +64,7 @@ class Question:
             return True
         else:
             return False
+
+    def __str__(self) -> str:
+        info = self.q_text + self.get_img_parameter
+        return info

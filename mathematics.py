@@ -9,16 +9,17 @@
 # -------------------------------------------------------------------------------
 
 from guizero import App, Text, PushButton, Box, Window, TextBox, Picture
-from question import Question 
-from PIL import Image, ImageFont
+from question import Question
+# from PIL import Image, ImageFont
 import random
 
 # dictionary for every question with an image in it
-img_dict = {0:"imgs/img_blank.PNG", 3: "imgs/math_q3.png", 5: "imgs/math_q5.PNG", 6:"imgs/math_q6.PNG", 7:"imgs/math_q7.PNG", 9:"imgs/math_q9.PNG"}
+img_dict = {0: "imgs/img_blank.PNG", 3: "imgs/math_q3.png", 5: "imgs/math_q5.PNG",
+            6: "imgs/math_q6.PNG", 7: "imgs/math_q7.PNG", 9: "imgs/math_q9.PNG"}
 
 
 list_questions = {
-    1: Question("An empty container weighs 120g. When 50 lollipops were put in it the weight was 870g. What is the weight of one lollipop?", "15 Grams", "10 grams", "5 grams", "20 grams", "" ),
+    1: Question("An empty container weighs 120g. When 50 lollipops were put in it the weight was 870g. What is the weight of one lollipop?", "15 Grams", "10 grams", "5 grams", "20 grams", ""),
     2: Question("Anne is going to Malta. How many euros will she get for £150 when the exchange rate is 1.18 euros to a pound?", "177 euros ", "178 euros", "176 euros", "175 euros", ""),
     3: Question("A car travels at a constant speed of 63 mph for 20 minutes. How far does the car travel in this time? (pic)", "21 miles ", "20 miles", "3 miles", "19 miles", ""),
     4: Question("A liquid is warmed from –3C to +5C. By how many degrees has its temperature risen?", "By 8 ", "By 4", "By -8", "By -4", ""),
@@ -120,11 +121,11 @@ class Mathematics:
         #-----------------------------Mathematics Widgets------------------------------#
 
         # Question Image
-        self.math_image = Picture(mathematics_container_1, 
-                                width=400,
-                                height=200,  
-                                image=img_dict.get(9)         
-                                )
+        self.math_image = Picture(mathematics_container_1,
+                                  width=400,
+                                  height=200,
+                                  image=img_dict.get(9)
+                                  )
 
         # Question Text
         self.math_question = TextBox(mathematics_container_2,
@@ -134,7 +135,6 @@ class Mathematics:
         self.math_question.bg = "#FF8108"
         self.math_question.font = "sans-serif"
         self.math_question.text_size = 12
-
 
         # Score & Question Num
         self.math_question_number = Text(mathematics_bottom_question,
@@ -172,12 +172,8 @@ class Mathematics:
         self.math_answer_4.bg = "#FFFA13"
         self.math_answer_4.font = "sans-serif"
 
-        
-
         self.next_question()
 
-        
-        
     def next_question(self):
         global order_counter
 
@@ -195,21 +191,21 @@ class Mathematics:
 
         # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
-        
+
         # Code below will retrive the current question number and it's image
         questionNum = questions_order[order_counter]
         if questionNum == 3:
-          self.math_image.value= img_dict.get(3)
+            self.math_image.value = img_dict.get(3)
         elif questionNum == 5:
-          self.math_image.value= img_dict.get(5)
+            self.math_image.value = img_dict.get(5)
         elif questionNum == 6:
-          self.math_image.value= img_dict.get(6)
+            self.math_image.value = img_dict.get(6)
         elif questionNum == 7:
-          self.math_image.value= img_dict.get(7)
+            self.math_image.value = img_dict.get(7)
         elif questionNum == 9:
-          self.math_image.value= img_dict.get(9)
+            self.math_image.value = img_dict.get(9)
         else:
-          self.math_image.value= img_dict.get(0)
+            self.math_image.value = img_dict.get(0)
 
         # randomizing the answers
         answers = list_questions[questions_order[order_counter]
@@ -219,13 +215,11 @@ class Mathematics:
         a3 = answers[2]
         a4 = answers[3]
 
-    
         self.math_question.value = q
         self.math_answer_1.text = a1
         self.math_answer_2.text = a2
         self.math_answer_3.text = a3
         self.math_answer_4.text = a4
-        
 
         # set the counter for the next question
         order_counter += 1
@@ -295,9 +289,3 @@ class Mathematics:
 
         # after checking the answer we can move to the next question
         self.next_question()
-
-
-
-    
-
-  

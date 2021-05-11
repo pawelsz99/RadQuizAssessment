@@ -9,32 +9,71 @@
 # -------------------------------------------------------------------------------
 
 
+from geography import list_questions as list_q_geo
+from mathematics import list_questions as list_q_math
+from chemistry import list_questions as list_q_chem
+from english import list_questions as list_q_eng
 from guizero import App, Text, PushButton, Box, Window
+import random
+
+list_questions = {}
+i = 1
+
+for x in range(1, 11):
+    list_questions[i] = list_q_math[x]
+    i += 1
+
+for x in range(1, 11):
+    list_questions[i] = list_q_chem[x]
+    i += 1
+
+for x in range(1, 11):
+    list_questions[i] = list_q_geo[x]
+    i += 1
+
+for x in range(1, 11):
+    list_questions[i] = list_q_eng[x]
+    i += 1
+
+questions_order = []
+# create an array [1,2...40]
+for x in range(list_questions.__len__()):
+    questions_order.append(x+1)
+order_counter = 0
+# this will be used in randomizing questions order
 
 
 class Ultimate:
     def __init__(self, app):
+        self.score = 0
         app = app
+
+        # after each start of the quiz window,
+        # reset the counter and randomize the question order
+        global order_counter
+        order_counter = 0
+        global questions_order
+        random.shuffle(questions_order)
 
         #-----------------------------Ultimate Window--------------------------------#
 
-        ultimate_window = Window(app, width=700, height=700, bg="#FFED7C")
+        self.ultimate_window = Window(app, width=700, height=700, bg="#FFED7C")
 
         # Quiz contantainers from top to bottom; ultimate_container_1 = Image container, ultimate_container_2 = Question container, ultimate_container_3 = filler container, ultimate_container_4 = upper answer button container, ultimate_container_5 = filler container, ultimate_container_6 = lower answer button container, ultimate_container_7 = bottom container with score and question
         ultimate_container_1 = Box(
-            ultimate_window, width=700, height=250, border=2)
+            self.ultimate_window, width=700, height=250, border=2)
         ultimate_container_2 = Box(
-            ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100, border=2)
         ultimate_container_3 = Box(
-            ultimate_window, width=700, height=25, border=2)
+            self.ultimate_window, width=700, height=25, border=2)
         ultimate_container_4 = Box(
-            ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100, border=2)
         ultimate_container_5 = Box(
-            ultimate_window, width=700, height=25, border=2)
+            self.ultimate_window, width=700, height=25, border=2)
         ultimate_container_6 = Box(
-            ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100, border=2)
         ultimate_container_7 = Box(
-            ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100, border=2)
 
         # containers where the upper buttons are positioned
         ultimate_filler_box_1 = Box(ultimate_container_4,
@@ -89,39 +128,149 @@ class Ultimate:
         #-----------------------------Ultimate Widgets--------------------------------#
 
         # Question Text
-        ultimate_question = Text(ultimate_container_2,
-                                 text="Question",
-                                 width=100,
-                                 height=100)
-        ultimate_question.bg = "#FF8108"
+        self.ultimate_question = Text(ultimate_container_2,
+                                      text="Question",
+                                      width=100,
+                                      height=100)
+        self.ultimate_question.bg = "#FF8108"
 
         # Score & Question Num
-        ultimate_question_number = Text(ultimate_bottom_question,
-                                        text="Question Num: 1/10")
-        ultimate_question_score = Text(ultimate_bottom_score, text="Score: 0")
+        self.ultimate_question_number = Text(ultimate_bottom_question,
+                                             text="Question Num: 1/10")
+        self.ultimate_question_score = Text(
+            ultimate_bottom_score, text="Score: 0")
 
         # Answer Buttons
-        ultimate_answer_1 = PushButton(ultimate_button_1,
-                                       align="left",
-                                       width=100,
-                                       height=70)
-        ultimate_answer_1.bg = "#54C03D"
-        ultimate_answer_1.font = "sans-serif"
-        ultimate_answer_2 = PushButton(ultimate_button_2,
-                                       align="right",
-                                       width=100,
-                                       height=70)
-        ultimate_answer_2.bg = "#2D73A9"
-        ultimate_answer_2.font = "sans-serif"
-        ultimate_answer_3 = PushButton(ultimate_button_3,
-                                       align="left",
-                                       width=100,
-                                       height=70)
-        ultimate_answer_3.bg = "#DB4692"
-        ultimate_answer_3.font = "sans-serif"
-        ultimate_answer_4 = PushButton(ultimate_button_4,
-                                       align="right",
-                                       width=100,
-                                       height=70)
-        ultimate_answer_4.bg = "#FFFA13"
-        ultimate_answer_4.font = "sans-serif"
+        self.ultimate_answer_1 = PushButton(ultimate_button_1,
+                                            align="left",
+                                            width=100,
+                                            height=70,
+                                            command=self.check_a1)
+        self.ultimate_answer_1.bg = "#54C03D"
+        self.ultimate_answer_1.font = "sans-serif"
+        self.ultimate_answer_2 = PushButton(ultimate_button_2,
+                                            align="right",
+                                            width=100,
+                                            height=70,
+                                            command=self.check_a2)
+        self.ultimate_answer_2.bg = "#2D73A9"
+        self.ultimate_answer_2.font = "sans-serif"
+        self.ultimate_answer_3 = PushButton(ultimate_button_3,
+                                            align="left",
+                                            width=100,
+                                            height=70,
+                                            command=self.check_a3)
+        self.ultimate_answer_3.bg = "#DB4692"
+        self.ultimate_answer_3.font = "sans-serif"
+        self.ultimate_answer_4 = PushButton(ultimate_button_4,
+                                            align="right",
+                                            width=100,
+                                            height=70,
+                                            command=self.check_a4)
+        self.ultimate_answer_4.bg = "#FFFA13"
+        self.ultimate_answer_4.font = "sans-serif"
+
+        self.next_question()
+
+    def next_question(self):
+        global order_counter
+
+        # ----------------------- check if end of the quiz ----------------------------- #
+        if order_counter >= 40:
+            # display the final score
+            # maybe something that looks better than popup?
+            self.ultimate_window.info(
+                "Congratulation", "Your score: " + str(self.score)+" /40")
+
+            # in the later stages remember to pass info
+            # if the user has passed the test
+            # to unlock the ultimate test
+            self.ultimate_window.destroy()
+
+        # ------------------- update question and answers --------------------- #
+        q = list_questions[questions_order[order_counter]].get_q_text()
+
+        # TODO put here some img magic
+
+        # randomizing the answers
+        answers = list_questions[questions_order[order_counter]
+                                 ].get_randomize_answers()
+        a1 = answers[0]
+        a2 = answers[1]
+        a3 = answers[2]
+        a4 = answers[3]
+
+        self.ultimate_question.value = q
+        self.ultimate_answer_1.text = a1
+        self.ultimate_answer_2.text = a2
+        self.ultimate_answer_3.text = a3
+        self.ultimate_answer_4.text = a4
+
+        # set the counter for the next question
+        order_counter += 1
+
+        # ----------------------- update score and question number --------------------- #
+
+        self.ultimate_question_score.value = "Score: " + str(self.score)
+        self.ultimate_question_number.value = "Question Num: " + \
+            str(order_counter) + "/40"
+
+    def check_a1(self):
+        """this function is called after pressing answer button 1
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.ultimate_answer_1.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a2(self):
+        """this function is called after pressing answer button 2
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.ultimate_answer_2.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a3(self):
+        """this function is called after pressing answer button 3
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.ultimate_answer_3.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
+
+    def check_a4(self):
+        """this function is called after pressing answer button 4
+            it checks if the answer was correct and continue to the next question 
+        """
+        answer = self.ultimate_answer_4.text
+        print(answer)
+
+        # the counter is already set for the next question
+        # so we need to reduce it by one
+        if list_questions[questions_order[order_counter - 1]].is_answer_correct(answer):
+            self.score += 1
+
+        # after checking the answer we can move to the next question
+        self.next_question()
