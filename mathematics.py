@@ -183,38 +183,41 @@ class Mathematics:
             # to unlock the ultimate test
             self.math_window.destroy()
 
-        # ------------------- update question and answers --------------------- #
-        q = list_questions[questions_order[order_counter]].get_q_text()
+        try:
+          # ------------------- update question and answers --------------------- #
+          q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # Code below will set an image for the question
-        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
-            self.math_image.value = "imgs/img_blank.PNG"
-        else:
-            self.math_image.value = list_questions[questions_order[order_counter]
-                                                   ].get_img_parameter()
+          # Code below will set an image for the question
+          if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+              self.math_image.value = "imgs/img_blank.PNG"
+          else:
+              self.math_image.value = list_questions[questions_order[order_counter]
+                                                    ].get_img_parameter()
 
-        # randomizing the answers
-        answers = list_questions[questions_order[order_counter]
-                                 ].get_randomize_answers()
-        a1 = answers[0]
-        a2 = answers[1]
-        a3 = answers[2]
-        a4 = answers[3]
+          # randomizing the answers
+          answers = list_questions[questions_order[order_counter]
+                                  ].get_randomize_answers()
+          a1 = answers[0]
+          a2 = answers[1]
+          a3 = answers[2]
+          a4 = answers[3]
 
-        self.math_question.value = q
-        self.math_answer_1.text = a1
-        self.math_answer_2.text = a2
-        self.math_answer_3.text = a3
-        self.math_answer_4.text = a4
+          self.math_question.value = q
+          self.math_answer_1.text = a1
+          self.math_answer_2.text = a2
+          self.math_answer_3.text = a3
+          self.math_answer_4.text = a4
 
-        # set the counter for the next question
-        order_counter += 1
+          # set the counter for the next question
+          order_counter += 1
 
-        # ----------------------- update score and question number --------------------- #
+          # ----------------------- update score and question number --------------------- #
 
-        self.math_question_score.value = "Score: " + str(self.score)
-        self.math_question_number.value = "Question Num: " + \
-            str(order_counter) + "/10"
+          self.math_question_score.value = "Score: " + str(self.score)
+          self.math_question_number.value = "Question Num: " + \
+              str(order_counter) + "/10"
+        except IndexError:
+            pass              
 
     def check_a1(self):
         """this function is called after pressing answer button 1

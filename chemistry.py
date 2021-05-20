@@ -182,38 +182,41 @@ class Chemistry:
             # to unlock the ultimate test
             self.chemistry_window.destroy()
 
-        # ------------------- update question and answers --------------------- #
-        q = list_questions[questions_order[order_counter]].get_q_text()
+        try:
+          # ------------------- update question and answers --------------------- #
+          q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # Code below will set an image for the question
-        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
-            self.chemistry_image.value = "imgs/img_blank.PNG"
-        else:
-            self.chemistry_image.value = list_questions[questions_order[order_counter]
-                                                        ].get_img_parameter()
+          # Code below will set an image for the question
+          if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+              self.chemistry_image.value = "imgs/img_blank.PNG"
+          else:
+              self.chemistry_image.value = list_questions[questions_order[order_counter]
+                                                          ].get_img_parameter()
 
-        # randomizing the answers
-        answers = list_questions[questions_order[order_counter]
-                                 ].get_randomize_answers()
-        a1 = answers[0]
-        a2 = answers[1]
-        a3 = answers[2]
-        a4 = answers[3]
+          # randomizing the answers
+          answers = list_questions[questions_order[order_counter]
+                                  ].get_randomize_answers()
+          a1 = answers[0]
+          a2 = answers[1]
+          a3 = answers[2]
+          a4 = answers[3]
 
-        self.chemistry_question.value = q
-        self.chemistry_answer_1.text = a1
-        self.chemistry_answer_2.text = a2
-        self.chemistry_answer_3.text = a3
-        self.chemistry_answer_4.text = a4
+          self.chemistry_question.value = q
+          self.chemistry_answer_1.text = a1
+          self.chemistry_answer_2.text = a2
+          self.chemistry_answer_3.text = a3
+          self.chemistry_answer_4.text = a4
 
-        # set the counter for the next question
-        order_counter += 1
+          # set the counter for the next question
+          order_counter += 1
 
-        # ----------------------- update score and question number --------------------- #
+          # ----------------------- update score and question number --------------------- #
 
-        self.chemistry_question_score.value = "Score: " + str(self.score)
-        self.chemistry_question_number.value = "Question Num: " + \
-            str(order_counter) + "/10"
+          self.chemistry_question_score.value = "Score: " + str(self.score)
+          self.chemistry_question_number.value = "Question Num: " + \
+              str(order_counter) + "/10"
+        except IndexError:
+            pass              
 
     def check_a1(self):
         """this function is called after pressing answer button 1

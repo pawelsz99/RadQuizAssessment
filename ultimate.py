@@ -243,39 +243,41 @@ class Ultimate:
             self.ultimate_window.destroy()
             
         
+        try:
+          # ------------------- update question and answers --------------------- #
+          q = list_questions[questions_order[order_counter]].get_q_text()
 
-        # ------------------- update question and answers --------------------- #
-        q = list_questions[questions_order[order_counter]].get_q_text()
+          # Code below will set an image for the question
+          if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+              self.ultimate_image.value = "imgs/img_blank.PNG"
+          else:
+              self.ultimate_image.value = list_questions[questions_order[order_counter]
+                                                    ].get_img_parameter()
 
-        # Code below will set an image for the question
-        if list_questions[questions_order[order_counter]].get_img_parameter() == "":
-            self.ultimate_image.value = "imgs/img_blank.PNG"
-        else:
-            self.ultimate_image.value = list_questions[questions_order[order_counter]
-                                                   ].get_img_parameter()
+          # randomizing the answers
+          answers = list_questions[questions_order[order_counter]
+                                  ].get_randomize_answers()
+          a1 = answers[0]
+          a2 = answers[1]
+          a3 = answers[2]
+          a4 = answers[3]
 
-        # randomizing the answers
-        answers = list_questions[questions_order[order_counter]
-                                 ].get_randomize_answers()
-        a1 = answers[0]
-        a2 = answers[1]
-        a3 = answers[2]
-        a4 = answers[3]
+          self.ultimate_question.value = q
+          self.ultimate_answer_1.text = a1
+          self.ultimate_answer_2.text = a2
+          self.ultimate_answer_3.text = a3
+          self.ultimate_answer_4.text = a4
 
-        self.ultimate_question.value = q
-        self.ultimate_answer_1.text = a1
-        self.ultimate_answer_2.text = a2
-        self.ultimate_answer_3.text = a3
-        self.ultimate_answer_4.text = a4
+          # set the counter for the next question
+          order_counter += 1
 
-        # set the counter for the next question
-        order_counter += 1
+          # ----------------------- update score and question number --------------------- #
 
-        # ----------------------- update score and question number --------------------- #
-
-        self.ultimate_question_score.value = "Score: " + str(self.score)
-        self.ultimate_question_number.value = "Question Num: " + \
-            str(order_counter) + "/40"
+          self.ultimate_question_score.value = "Score: " + str(self.score)
+          self.ultimate_question_number.value = "Question Num: " + \
+              str(order_counter) + "/40"
+        except IndexError:
+            pass
         
         return menu_score_disp
 
