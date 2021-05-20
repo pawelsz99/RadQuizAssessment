@@ -14,7 +14,10 @@ from mathematics import list_questions as list_q_math
 from chemistry import list_questions as list_q_chem
 from english import list_questions as list_q_eng
 from guizero import App, Text, PushButton, Box, Window, Picture
+import pickle
 import random
+
+menu_score_disp = 0
 
 list_questions = {}
 i = 1
@@ -43,9 +46,23 @@ order_counter = 0
 # this will be used in randomizing questions order
 
 
+# dictionary has been created to accomodate score and highscore for this program
+get_session_scores = {
+                  "highscore": 0,
+                  "score": 0   
+                  }
+
+
+
 class Ultimate:
     def __init__(self, app):
+        # score & highscore is being loaded in from a separate file
+        start_up = open("startup_vars", "rb")
+        get_dict_data = pickle.load(start_up)
+
+
         self.score = 0
+        self.highscore = get_dict_data.get("highscore")
         app = app
 
         # after each start of the quiz window,
@@ -115,15 +132,26 @@ class Ultimate:
         ultimate_bottom = Box(ultimate_container_7,
                               align="bottom",
                               width=700,
-                              height=50)
+                              height=50,
+                              border=True)
         ultimate_bottom_question = Box(ultimate_bottom,
                                        align="right",
                                        width=200,
-                                       height=25)
+                                       height=25,
+                                       )
         ultimate_bottom_score = Box(ultimate_bottom,
                                     align="left",
                                     width=100,
-                                    height=25)
+                                    height=25,
+                                    )
+
+        ultimate_bottom_highscore = Box(ultimate_bottom, 
+                                    width=150,
+                                    height=25,
+                                    align="left",
+                                    )
+        
+        
 
         #-----------------------------Ultimate Widgets--------------------------------#
 
@@ -139,11 +167,17 @@ class Ultimate:
                                       height=100)
         self.ultimate_question.bg = "#FF8108"
 
-        # Score & Question Num
+        # Score, High Score & Question Num 
         self.ultimate_question_number = Text(ultimate_bottom_question,
                                              text="Question Num: 1/10")
+
         self.ultimate_question_score = Text(
             ultimate_bottom_score, text="Score: 0")
+
+        self.high_score_display = Text(ultimate_bottom_highscore,
+            text="High Score: " + str(self.highscore),
+            align="bottom")
+        
 
         # Answer Buttons
         self.ultimate_answer_1 = PushButton(ultimate_button_1,
@@ -178,19 +212,37 @@ class Ultimate:
         self.next_question()
 
     def next_question(self):
-        global order_counter
+        global order_counter, menu_score_disp
 
         # ----------------------- check if end of the quiz ----------------------------- #
         if order_counter >= 40:
             # display the final score
             # maybe something that looks better than popup?
+
+            # saves
+            get_session_scores["score"] = self.score
+            if self.score >= self.highscore:
+              self.highscore = self.score
+              self.high_score_display.value = "High Score: " + str(self.highscore)
+
+              get_session_scores["highscore"] = self.highscore
+
+            start_up = open("startup_vars", "wb")
+            pickle.dump(get_session_scores, start_up)
+            start_up.close()
+
             self.ultimate_window.info(
                 "Congratulation", "Your score: " + str(self.score)+" /40")
+
+            menu_score_disp = str(self.score)
+            
 
             # in the later stages remember to pass info
             # if the user has passed the test
             # to unlock the ultimate test
             self.ultimate_window.destroy()
+            
+        
 
         # ------------------- update question and answers --------------------- #
         q = list_questions[questions_order[order_counter]].get_q_text()
@@ -224,6 +276,8 @@ class Ultimate:
         self.ultimate_question_score.value = "Score: " + str(self.score)
         self.ultimate_question_number.value = "Question Num: " + \
             str(order_counter) + "/40"
+        
+        return menu_score_disp
 
     def check_a1(self):
         """this function is called after pressing answer button 1

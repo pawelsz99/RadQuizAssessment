@@ -15,7 +15,6 @@ from geography import *
 from english import *
 from ultimate import *
 
-
 class Menu:
     def __init__(self, app):
         self.app = app
@@ -36,6 +35,7 @@ class Menu:
                                  align="bottom",
                                  width=170,
                                  height=55)
+
         filler_box_2 = Box(menu_container_2,
                            align="bottom", width=700, height=20)
 
@@ -46,6 +46,7 @@ class Menu:
                                  align="bottom",
                                  width=170,
                                  height=55)
+
         filler_box_4 = Box(menu_container_3,
                            align="bottom", width=700, height=20)
 
@@ -56,6 +57,7 @@ class Menu:
                                  align="bottom",
                                  width=170,
                                  height=55)
+
         filler_box_6 = Box(menu_container_4,
                            align="bottom", width=700, height=20)
 
@@ -66,18 +68,21 @@ class Menu:
                                  align="bottom",
                                  width=170,
                                  height=55)
+
         filler_box_8 = Box(menu_container_5,
                            align="bottom", width=700, height=20)
 
         # button  container number 5
         filler_box_9 = Box(menu_container_6,
                            align="top", width=700, height=20)
+
         button_5_container = Box(menu_container_6,
                                  align="bottom",
                                  width=170,
                                  height=55)
         filler_box_10 = Box(
             menu_container_6, align="bottom", width=700, height=20)
+        
 
         #-------------------------------Main Menu Buttons----------------------------------#
 
@@ -126,6 +131,11 @@ class Menu:
         UltimateTest.bg = "#DB4692"
         UltimateTest.font = "sans-serif"
 
+
+        
+
+    # Functions assigned to the buttons
+
     def mathematics(self):
         mathematics = Mathematics(self.app)
 
@@ -140,3 +150,7 @@ class Menu:
 
     def ultimate(self):
         ultimate = Ultimate(self.app)
+
+    
+  
+    
