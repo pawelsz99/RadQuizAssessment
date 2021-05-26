@@ -21,7 +21,7 @@ list_questions = {
     4: Question("A liquid is warmed from –3C to +5C. By how many degrees has its temperature risen?", "By 8 ", "By 4", "By -8", "By -4", ""),
     5: Question("Some water has been added to this measuring jar. How much more water is needed to fill the jar to 1.5 litres? (pic)", "0.6 litres", "0.7 litres", "0.5 litres", "1 liter", "imgs/math_q5.PNG"),
     6: Question("The number of pupils in each year group in a secondary school was recorded and this pie chart drawn. There are 1200 pupils in the school. How many pupils were there in S5/6? (pic)", "200 pupils", "150 pupils", "210 pupils", "190 pupils", "imgs/math_q6.PNG"),
-    7: Question("The number of people using a gym each day was recorded for a week and this compound bar chart was drawn. Who has used the gym the most? Male of Female? (pic)", "Female ", "Male", " ", " ", "imgs/math_q7.PNG"),
+    7: Question("The number of people using a gym each day was recorded for a week and this compound bar chart was drawn. Who has used the gym the most? Male of Female? (pic)", "Female ", "Male", "", "", "imgs/math_q7.PNG"),
     8: Question("Sally scored the following marks in three of her tests. Maths: 25 out of 40 English: 32 out of 50 Science: 38 out of 60 and Geography: 39 out of 70 In which subject did she do best in?", "English ", "Maths", "Science", "Geography", ""),
     9: Question("Calculate the perimeter of the shape. (pic)", "52 cm", "50 cm", "54 cm", "51 cm", "imgs/math_q9.PNG"),
     10: Question("Increase £80 by 60%", "128£", "126£", "122£", "125£", "")
@@ -184,40 +184,44 @@ class Mathematics:
             self.math_window.destroy()
 
         try:
-          # ------------------- update question and answers --------------------- #
-          q = list_questions[questions_order[order_counter]].get_q_text()
 
-          # Code below will set an image for the question
-          if list_questions[questions_order[order_counter]].get_img_parameter() == "":
-              self.math_image.value = "imgs/img_blank.PNG"
-          else:
-              self.math_image.value = list_questions[questions_order[order_counter]
-                                                    ].get_img_parameter()
+            # ------------------- update question and answers --------------------- #
+            q = list_questions[questions_order[order_counter]].get_q_text()
 
-          # randomizing the answers
-          answers = list_questions[questions_order[order_counter]
-                                  ].get_randomize_answers()
-          a1 = answers[0]
-          a2 = answers[1]
-          a3 = answers[2]
-          a4 = answers[3]
+            # Code below will set an image for the question
+            if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+                self.math_image.value = "imgs/img_blank.PNG"
+            else:
+                self.math_image.value = list_questions[questions_order[order_counter]
+                                                       ].get_img_parameter()
 
-          self.math_question.value = q
-          self.math_answer_1.text = a1
-          self.math_answer_2.text = a2
-          self.math_answer_3.text = a3
-          self.math_answer_4.text = a4
+            self.showAllAnswersButtons()
+            # randomizing the answers
+            answers = list_questions[questions_order[order_counter]
+                                     ].get_randomize_answers()
+            a1 = answers[0]
+            a2 = answers[1]
+            a3 = answers[2]
+            a4 = answers[3]
 
-          # set the counter for the next question
-          order_counter += 1
+            self.math_question.value = q
+            self.math_answer_1.text = a1
+            self.math_answer_2.text = a2
+            self.math_answer_3.text = a3
+            self.math_answer_4.text = a4
 
-          # ----------------------- update score and question number --------------------- #
+            self.hideBlankButtons()
 
-          self.math_question_score.value = "Score: " + str(self.score)
-          self.math_question_number.value = "Question Num: " + \
-              str(order_counter) + "/10"
+            # set the counter for the next question
+            order_counter += 1
+
+            # ----------------------- update score and question number --------------------- #
+
+            self.math_question_score.value = "Score: " + str(self.score)
+            self.math_question_number.value = "Question Num: " + \
+                str(order_counter) + "/10"
         except IndexError:
-            pass              
+            pass
 
     def check_a1(self):
         """this function is called after pressing answer button 1
@@ -278,3 +282,19 @@ class Mathematics:
 
         # after checking the answer we can move to the next question
         self.next_question()
+
+    def showAllAnswersButtons(self):
+        self.math_answer_1.show()
+        self.math_answer_2.show()
+        self.math_answer_3.show()
+        self.math_answer_4.show()
+
+    def hideBlankButtons(self):
+        if self.math_answer_1.text == "":
+            self.math_answer_1.hide()
+        if self.math_answer_2.text == "":
+            self.math_answer_2.hide()
+        if self.math_answer_3.text == "":
+            self.math_answer_3.hide()
+        if self.math_answer_4.text == "":
+            self.math_answer_4.hide()

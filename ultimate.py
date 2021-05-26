@@ -21,7 +21,7 @@ menu_score_disp = 0
 
 list_questions = {}
 i = 1
-#getting ready the questions 
+# getting ready the questions
 for x in range(1, 11):
     list_questions[i] = list_q_math[x]
     i += 1
@@ -48,10 +48,9 @@ order_counter = 0
 
 # dictionary has been created to accomodate score and highscore for this program
 get_session_scores = {
-                  "highscore": 0,
-                  "score": 0   
-                  }
-
+    "highscore": 0,
+    "score": 0
+}
 
 
 class Ultimate:
@@ -59,7 +58,6 @@ class Ultimate:
         # score & highscore is being loaded in from a separate file
         start_up = open("startup_vars", "rb")
         get_dict_data = pickle.load(start_up)
-
 
         self.score = 0
         self.highscore = get_dict_data.get("highscore")
@@ -145,20 +143,18 @@ class Ultimate:
                                     height=25,
                                     )
 
-        ultimate_bottom_highscore = Box(ultimate_bottom, 
-                                    width=150,
-                                    height=25,
-                                    align="left",
-                                    )
-        
-        
+        ultimate_bottom_highscore = Box(ultimate_bottom,
+                                        width=150,
+                                        height=25,
+                                        align="left",
+                                        )
 
         #-----------------------------Ultimate Widgets--------------------------------#
 
         # Question Image
         self.ultimate_image = Picture(ultimate_container_1,
-                                  width=400,
-                                  height=200)
+                                      width=400,
+                                      height=200)
 
         # Question Text
         self.ultimate_question = Text(ultimate_container_2,
@@ -167,7 +163,7 @@ class Ultimate:
                                       height=100)
         self.ultimate_question.bg = "#FF8108"
 
-        # Score, High Score & Question Num 
+        # Score, High Score & Question Num
         self.ultimate_question_number = Text(ultimate_bottom_question,
                                              text="Question Num: 1/10")
 
@@ -175,9 +171,9 @@ class Ultimate:
             ultimate_bottom_score, text="Score: 0")
 
         self.high_score_display = Text(ultimate_bottom_highscore,
-            text="High Score: " + str(self.highscore),
-            align="bottom")
-        
+                                       text="High Score: " +
+                                       str(self.highscore),
+                                       align="bottom")
 
         # Answer Buttons
         self.ultimate_answer_1 = PushButton(ultimate_button_1,
@@ -222,10 +218,11 @@ class Ultimate:
             # saves
             get_session_scores["score"] = self.score
             if self.score >= self.highscore:
-              self.highscore = self.score
-              self.high_score_display.value = "High Score: " + str(self.highscore)
+                self.highscore = self.score
+                self.high_score_display.value = "High Score: " + \
+                    str(self.highscore)
 
-              get_session_scores["highscore"] = self.highscore
+                get_session_scores["highscore"] = self.highscore
 
             start_up = open("startup_vars", "wb")
             pickle.dump(get_session_scores, start_up)
@@ -235,50 +232,50 @@ class Ultimate:
                 "Congratulation", "Your score: " + str(self.score)+" /40")
 
             menu_score_disp = str(self.score)
-            
 
             # in the later stages remember to pass info
             # if the user has passed the test
             # to unlock the ultimate test
             self.ultimate_window.destroy()
-            
-        
+
         try:
-          # ------------------- update question and answers --------------------- #
-          q = list_questions[questions_order[order_counter]].get_q_text()
+            # ------------------- update question and answers --------------------- #
+            q = list_questions[questions_order[order_counter]].get_q_text()
 
-          # Code below will set an image for the question
-          if list_questions[questions_order[order_counter]].get_img_parameter() == "":
-              self.ultimate_image.value = "imgs/img_blank.PNG"
-          else:
-              self.ultimate_image.value = list_questions[questions_order[order_counter]
-                                                    ].get_img_parameter()
+            # Code below will set an image for the question
+            if list_questions[questions_order[order_counter]].get_img_parameter() == "":
+                self.ultimate_image.value = "imgs/img_blank.PNG"
+            else:
+                self.ultimate_image.value = list_questions[questions_order[order_counter]
+                                                           ].get_img_parameter()
+            self.showAllAnswersButtons()
+            # randomizing the answers
+            answers = list_questions[questions_order[order_counter]
+                                     ].get_randomize_answers()
+            a1 = answers[0]
+            a2 = answers[1]
+            a3 = answers[2]
+            a4 = answers[3]
 
-          # randomizing the answers
-          answers = list_questions[questions_order[order_counter]
-                                  ].get_randomize_answers()
-          a1 = answers[0]
-          a2 = answers[1]
-          a3 = answers[2]
-          a4 = answers[3]
+            self.ultimate_question.value = q
+            self.ultimate_answer_1.text = a1
+            self.ultimate_answer_2.text = a2
+            self.ultimate_answer_3.text = a3
+            self.ultimate_answer_4.text = a4
 
-          self.ultimate_question.value = q
-          self.ultimate_answer_1.text = a1
-          self.ultimate_answer_2.text = a2
-          self.ultimate_answer_3.text = a3
-          self.ultimate_answer_4.text = a4
+            self.hideBlankButtons()
 
-          # set the counter for the next question
-          order_counter += 1
+            # set the counter for the next question
+            order_counter += 1
 
-          # ----------------------- update score and question number --------------------- #
+            # ----------------------- update score and question number --------------------- #
 
-          self.ultimate_question_score.value = "Score: " + str(self.score)
-          self.ultimate_question_number.value = "Question Num: " + \
-              str(order_counter) + "/40"
+            self.ultimate_question_score.value = "Score: " + str(self.score)
+            self.ultimate_question_number.value = "Question Num: " + \
+                str(order_counter) + "/40"
         except IndexError:
             pass
-        
+
         return menu_score_disp
 
     def check_a1(self):
@@ -340,3 +337,19 @@ class Ultimate:
 
         # after checking the answer we can move to the next question
         self.next_question()
+
+    def showAllAnswersButtons(self):
+        self.ultimate_answer_1.show()
+        self.ultimate_answer_2.show()
+        self.ultimate_answer_3.show()
+        self.ultimate_answer_4.show()
+
+    def hideBlankButtons(self):
+        if self.ultimate_answer_1.text == "":
+            self.ultimate_answer_1.hide()
+        if self.ultimate_answer_2.text == "":
+            self.ultimate_answer_2.hide()
+        if self.ultimate_answer_3.text == "":
+            self.ultimate_answer_3.hide()
+        if self.ultimate_answer_4.text == "":
+            self.ultimate_answer_4.hide()
