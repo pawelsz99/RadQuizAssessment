@@ -14,16 +14,16 @@ from question import Question
 import random
 
 list_questions = {
-    1: Question("Can you swim?", "In a pool", "Yes, I can", "Very good", "Butterfly", ""),
-    2: Question("Did he go to work or to school?", "English lesson", "No, he doesn't", "At 3:00 PM", "To work", ""),
-    3: Question("Has your class finished? ", "Yes, it has", "In five minutes", "It's English", "Yes, it done", ""),
-    4: Question("Where is my pen?", "Because it's lost", "On the table", "No, you don't", "Take this", ""),
-    5: Question("Who did you visit?", "I visit my mother", "Yes, I did", "I visited Judy", "I was swimming", ""),
-    6: Question("Shall we go to your place or mine?", "My place", "It is yours", "Yes, we shall", "No, we haven't", ""),
-    7: Question("When will Lucy arrive?", "At 7 PM", "No, she won't", "From France", "Yesterday", ""),
-    8: Question("Who called here so late?", "It's midnight", "It was Ryan", "Yes, I called", "Let's order pizza", ""),
-    9: Question("Do you want to watch a movie?", "At the cinema", "Yes, I watched it", "No, I don't", "Yes, I has", ""),
-    10: Question("Have you done the laundry?", "Yes, I do", "On Wednesday", "No, I haven't", "Tomorrow", "")
+    1: Question("Chose the best word that fits with this question. \nCan you swim?", "Yes, I can", "In a pool", "Very good", "Butterfly", ""),
+    2: Question("Chose the best word that fits with this question. \nDid he go to work or to school?", "To work", "No, he doesn't", "At 3:00 PM", "English lesson", ""),
+    3: Question("Chose the best word that fits with this question. \nHas your class finished? ", "Yes, it has", "In five minutes", "It's English", "Yes, it done", ""),
+    4: Question("Chose the best word that fits with this question. \nWhere is my pen?", "On the table", "Because it's lost", "No, you don't", "Take this", ""),
+    5: Question("Chose the best word that fits with this question. \nWho did you visit?", "I visited Judy", "Yes, I did", "I visit my mother", "I was swimming", ""),
+    6: Question("Chose the best word that fits with this question. \nShall we go to your place or mine?", "My place", "It is yours", "Yes, we shall", "No, we haven't", ""),
+    7: Question("Chose the best word that fits with this question. \nWhen will Lucy arrive?", "At 7 PM", "No, she won't", "From France", "Yesterday", ""),
+    8: Question("Chose the best word that fits with this question. \nWho called here so late?", "It's midnight", "It might Ryan", "Yes, I didn't called", "Let's order pizza", ""),
+    9: Question("Chose the best word that fits with this question. \nDo you want to watch a movie?", "At the cinema", "Yes, I watched it", "No, I don't", "Yes, I has", ""),
+    10: Question("Chose the best word that fits with this question. \nHave you done the laundry?", "No, I haven't", "On Wednesday", "Yes, I do", "Tomorrow", "")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

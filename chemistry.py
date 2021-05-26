@@ -23,7 +23,7 @@ list_questions = {
     6: Question("Which food substance helps move waste through the body?", "Fibre", "Protein", "Carbohydrates", "Sugar", ""),
     7: Question("Which part of body is this? ", "Liver", "Spleen", "Bladder", "Gall", "imgs/chem_q7.PNG"),
     8: Question("Ecosystem consists of …", "Biotic community", " Plants & Animals ", "Diffrent Species", "Various Insects", ""),
-    9: Question("WhWhat year was the first animal clonedich organism would most likely come between the grass and the snake? ", "rabbit", "wheat", "coyote", "clover", "imgs/chem_q9.PNG"),
+    9: Question("Which organism would most likely come between the grass and the snake? ", "rabbit", "wheat", "coyote", "clover", "imgs/chem_q9.PNG"),
     10: Question("Which system is represented on picture ? ", "Digestive", "Eco System ", " Planetary ", " Elementary System", "imgs/chem_q10.PNG")
 }
 

@@ -18,13 +18,13 @@ list_questions = {
     1: Question("What does each star on the flag of the United States stand for?", "States", "Ex-Presidents", "Cities", "Universities", ""),
     2: Question("What colour is the spot in the middle of the Japanese flag?", "Red", "White", "Pink", "Colar", ""),
     3: Question("Baku is the capital city of which eastern European country?", "Georgia", "Azerbaijan", "Russia", "Belarus", ""),
-    4: Question("In which country is the worlds highest waterfall?", "USA", "UK", "Venezuela", "Australia", ""),
+    4: Question("In which country is the worlds highest waterfall?", "Venezuela", "UK", "USA", "Australia", ""),
     5: Question("What is the highest mountain in Britain?", "Ben Nevis", "Ben Macdui", "Braeriach", "Aonach Mor", ""),
-    6: Question("What is the unit of currency in Spain?", "Pounds", "Euros", "Dollars", "Peseta", ""),
-    7: Question("Which country is it? (pic)", "Brazil", "Mexico", "Argentina", "Venezuela", "imgs/geo_q7.PNG"),
-    8: Question("What is the name of this ocean? (pic)", "Pacific Ocean", "Arctic Ocean", "Atlantic Ocean", "Indian Ocean", "imgs/geo_q8.PNG"),
-    9: Question("Which country has this flag? (pic) ", "Russia", "France", "The Netherlands", "Belgium", "imgs/geo_q9.PNG"),
-    10: Question("Where is this building located? (pic)", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain", "imgs/geo_q10.PNG")
+    6: Question("What is the unit of currency in Spain?", "Euros", "Pounds", "Dollars", "Peseta", ""),
+    7: Question("Which country would you find this site? ", "Brazil", "Mexico", "Argentina", "Venezuela", "imgs/geo_q7.PNG"),
+    8: Question("What is the name of this ocean? ", "Indian Ocean", "Arctic Ocean", "Atlantic Ocean", "Pacific Ocean", "imgs/geo_q8.PNG"),
+    9: Question("Which country has this flag?  ", "Netherlands", "France", "Russia", "Belgium", "imgs/geo_q9.PNG"),
+    10: Question("Where is this building located?", "Rome, Italy", "Milan, Italy", "Paris, France", "Barcelona, Spain", "imgs/geo_q10.PNG")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

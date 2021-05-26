@@ -15,16 +15,16 @@ import random
 
 
 list_questions = {
-    1: Question("An empty container weighs 120g. When 50 lollipops were put in it the weight was 870g. What is the weight of one lollipop?", "15 Grams", "10 grams", "5 grams", "20 grams", ""),
-    2: Question("Anne is going to Malta. How many euros will she get for £150 when the exchange rate is 1.18 euros to a pound?", "177 euros ", "178 euros", "176 euros", "175 euros", ""),
-    3: Question("A car travels at a constant speed of 63 mph for 20 minutes. How far does the car travel in this time? (pic)", "21 miles ", "20 miles", "3 miles", "19 miles", "imgs/math_q3.png"),
-    4: Question("A liquid is warmed from –3C to +5C. By how many degrees has its temperature risen?", "By 8 ", "By 4", "By -8", "By -4", ""),
-    5: Question("Some water has been added to this measuring jar. How much more water is needed to fill the jar to 1.5 litres? (pic)", "0.6 litres", "0.7 litres", "0.5 litres", "1 liter", "imgs/math_q5.PNG"),
-    6: Question("The number of pupils in each year group in a secondary school was recorded and this pie chart drawn. There are 1200 pupils in the school. How many pupils were there in S5/6? (pic)", "200 pupils", "150 pupils", "210 pupils", "190 pupils", "imgs/math_q6.PNG"),
-    7: Question("The number of people using a gym each day was recorded for a week and this compound bar chart was drawn. Who has used the gym the most? Male of Female? (pic)", "Female ", "Male", "", "", "imgs/math_q7.PNG"),
-    8: Question("Sally scored the following marks in three of her tests. Maths: 25 out of 40 English: 32 out of 50 Science: 38 out of 60 and Geography: 39 out of 70 In which subject did she do best in?", "English ", "Maths", "Science", "Geography", ""),
-    9: Question("Calculate the perimeter of the shape. (pic)", "52 cm", "50 cm", "54 cm", "51 cm", "imgs/math_q9.PNG"),
-    10: Question("Increase £80 by 60%", "128£", "126£", "122£", "125£", "")
+    1: Question("An empty container weights 120g. \nWhen 50 lollipops were put in it the weight changed to 870g.‏‏‎‏‏‎‏‎ \nWhat is the weight of one lollipop?", "15 Grams", "10 grams", "5 grams", "20 grams", ""),
+    2: Question("Anne is going to Malta.\nHow many euros will she get for £150 \nwhen the exchange rate is 1.18 euros to a pound?", "177 euros ", "178 euros", "176 euros", "175 euros", ""),
+    3: Question("A car travels at a constant speed of 63 mph for 20 minutes. \nHow far does the car travel in this time?", "21 miles ", "20 miles", "3 miles", "19 miles", "imgs/math_q3.png"),
+    4: Question("A liquid is warmed from –3C to +5C.\nBy how many degrees has its temperature risen?", "By 8 ", "By 4", "By -8", "By -4", ""),
+    5: Question("Some water has been added to this measuring jar.\nHow much more water is needed to fill the jar to 1.5 litres? ", "0.6 litres", "0.7 litres", "0.5 litres", "1 liter", "imgs/math_q5.PNG"),
+    6: Question("The number of pupils in each year group in a secondary school was recorded \nand this pie chart drawn.\nThere are 1200 pupils in the school.\n\nHow many pupils were there in S5/6? ", "200 pupils", "150 pupils", "210 pupils", "190 pupils", "imgs/math_q6.PNG"),
+    7: Question("The number of people using a gym each day was recorded for a week \nand this compound bar chart was drawn.\nWho has used the gym the most? Male of Female? ", "Female ", "Male", "", "", "imgs/math_q7.PNG"),
+    8: Question("Sally scored the following marks in three of her tests. Maths: 25 out of 40\nEnglish: 32 out of 50\nScience: 38 out of 60\nGeography: 39 out of 70. In which subject did she do best in?", "English ", "Maths", "Science", "Geography", ""),
+    9: Question("Calculate the perimeter of the shape. ", "52 cm", "50 cm", "54 cm", "51 cm", "imgs/math_q9.PNG"),
+    10: Question("How many pounds will you get by increasing £80 by 60%", "128£", "126£", "122£", "125£", "")
 }
 
 questions_order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -114,7 +114,7 @@ class Mathematics:
                                        width=100,
                                        height=25)
 
-        #-----------------------------Mathematics Widgets------------------------------#
+        #-----------------------------Mathematics Widgets------------------------------#‎‎‏‏‎‏‏‎
 
         # Question Image
         self.math_image = Picture(mathematics_container_1,
