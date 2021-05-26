@@ -152,8 +152,8 @@ class Ultimate:
 
         # Question Image
         self.ultimate_image = Picture(ultimate_container_1,
-                                      width=400,
-                                      height=200)
+                                      width=700,
+                                      height=250)
 
         # Question Text
         self.ultimate_question = Text(ultimate_container_2,

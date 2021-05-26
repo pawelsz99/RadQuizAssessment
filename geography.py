@@ -119,8 +119,8 @@ class Geography:
 
         # Question Image
         self.geography_image = Picture(geography_container_1,
-                                       width=400,
-                                       height=200)
+                                       width=700,
+                                       height=250)
 
         # Question Text
         self.geography_question = Text(geography_container_2,
