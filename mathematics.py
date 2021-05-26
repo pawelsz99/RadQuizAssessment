@@ -50,19 +50,19 @@ class Mathematics:
 
         # Quiz contantainers from top to bottom; mathematics_container_1 = Image container, mathematics_container_2 = Question container, mathematics_container_3 = filler container, mathematics_container_4 = upper answer button container, mathematics_container_5 = filler container, mathematics_container_6 = lower answer button container, mathematics_container_7 = bottom container with score and question
         mathematics_container_1 = Box(
-            self.math_window, width=850, height=250, border=2)
+            self.math_window, width=850, height=250)
         mathematics_container_2 = Box(
             self.math_window, width=850, height=100, border=2)
         mathematics_container_3 = Box(
-            self.math_window, width=700, height=25, border=2)
+            self.math_window, width=700, height=25)
         mathematics_container_4 = Box(
-            self.math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100)
         mathematics_container_5 = Box(
-            self.math_window, width=700, height=25, border=2)
+            self.math_window, width=700, height=25)
         mathematics_container_6 = Box(
-            self.math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100)
         mathematics_container_7 = Box(
-            self.math_window, width=700, height=100, border=2)
+            self.math_window, width=700, height=100)
 
         # containers where the upper buttons are positioned
         math_filler_box_1 = Box(mathematics_container_4,

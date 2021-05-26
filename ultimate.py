@@ -76,19 +76,19 @@ class Ultimate:
 
         # Quiz contantainers from top to bottom; ultimate_container_1 = Image container, ultimate_container_2 = Question container, ultimate_container_3 = filler container, ultimate_container_4 = upper answer button container, ultimate_container_5 = filler container, ultimate_container_6 = lower answer button container, ultimate_container_7 = bottom container with score and question
         ultimate_container_1 = Box(
-            self.ultimate_window, width=700, height=250, border=2)
+            self.ultimate_window, width=700, height=250)
         ultimate_container_2 = Box(
             self.ultimate_window, width=700, height=100, border=2)
         ultimate_container_3 = Box(
-            self.ultimate_window, width=700, height=25, border=2)
+            self.ultimate_window, width=700, height=25)
         ultimate_container_4 = Box(
-            self.ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100)
         ultimate_container_5 = Box(
-            self.ultimate_window, width=700, height=25, border=2)
+            self.ultimate_window, width=700, height=25)
         ultimate_container_6 = Box(
-            self.ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100)
         ultimate_container_7 = Box(
-            self.ultimate_window, width=700, height=100, border=2)
+            self.ultimate_window, width=700, height=100)
 
         # containers where the upper buttons are positioned
         ultimate_filler_box_1 = Box(ultimate_container_4,
@@ -130,8 +130,7 @@ class Ultimate:
         ultimate_bottom = Box(ultimate_container_7,
                               align="bottom",
                               width=700,
-                              height=50,
-                              border=True)
+                              height=50)
         ultimate_bottom_question = Box(ultimate_bottom,
                                        align="right",
                                        width=200,

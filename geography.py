@@ -51,19 +51,19 @@ class Geography:
 
         # Quiz contantainers from top to bottom; geography_container_1 = Image container, geography_container_2 = Question container, geography_container_3 = filler container, geography_container_4 = upper answer button container, geography_container_5 = filler container, geography_container_6 = lower answer button container, geography_container_7 = bottom container with score and question
         geography_container_1 = Box(
-            self.geography_window, width=700, height=250, border=2)
+            self.geography_window, width=700, height=250)
         geography_container_2 = Box(
             self.geography_window, width=700, height=100, border=2)
         geography_container_3 = Box(
-            self.geography_window, width=700, height=25, border=2)
+            self.geography_window, width=700, height=25)
         geography_container_4 = Box(
-            self.geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100)
         geography_container_5 = Box(
-            self.geography_window, width=700, height=25, border=2)
+            self.geography_window, width=700, height=25)
         geography_container_6 = Box(
-            self.geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100)
         geography_container_7 = Box(
-            self.geography_window, width=700, height=100, border=2)
+            self.geography_window, width=700, height=100)
 
         # containers where the upper buttons are positioned
         geography_filler_box_1 = Box(geography_container_4,

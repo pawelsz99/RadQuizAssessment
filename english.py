@@ -49,19 +49,19 @@ class English:
 
         # Quiz contantainers from top to bottom; english_container_1 = Image container, english_container_2 = Question container, english_container_3 = filler container, english_container_4 = upper answer button container, english_container_5 = filler container, english_container_6 = lower answer button container, english_container_7 = bottom container with score and question
         english_container_1 = Box(
-            self.english_window, width=700, height=250, border=2)
+            self.english_window, width=700, height=250)
         english_container_2 = Box(
             self.english_window, width=700, height=100, border=2)
         english_container_3 = Box(
-            self.english_window, width=700, height=25, border=2)
+            self.english_window, width=700, height=25)
         english_container_4 = Box(
-            self.english_window, width=700, height=100, border=2)
+            self.english_window, width=700, height=100)
         english_container_5 = Box(
-            self.english_window, width=700, height=25, border=2)
+            self.english_window, width=700, height=25)
         english_container_6 = Box(
-            self.english_window, width=700, height=100, border=2)
+            self.english_window, width=700, height=100)
         english_container_7 = Box(
-            self.english_window, width=700, height=100, border=2)
+            self.english_window, width=700, height=100)
 
         # containers where the upper buttons are positioned
         english_filler_box_1 = Box(english_container_4,

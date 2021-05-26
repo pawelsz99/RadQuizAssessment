@@ -51,19 +51,19 @@ class Chemistry:
 
         # Quiz contantainers from top to bottom; chemistry_container_1 = Image container, chemistry_container_2 = Question container, chemistry_container_3 = filler container, chemistry_container_4 = upper answer button container, chemistry_container_5 = filler container, chemistry_container_6 = lower answer button container, chemistry_container_7 = bottom container with score and question
         chemistry_container_1 = Box(
-            self.chemistry_window, width=700, height=250, border=2)
+            self.chemistry_window, width=700, height=250)
         chemistry_container_2 = Box(
             self.chemistry_window, width=700, height=100, border=2)
         chemistry_container_3 = Box(
-            self.chemistry_window, width=700, height=25, border=2)
+            self.chemistry_window, width=700, height=25)
         chemistry_container_4 = Box(
-            self.chemistry_window, width=700, height=100, border=2)
+            self.chemistry_window, width=700, height=100)
         chemistry_container_5 = Box(
-            self.chemistry_window, width=700, height=25, border=2)
+            self.chemistry_window, width=700, height=25)
         chemistry_container_6 = Box(
-            self.chemistry_window, width=700, height=100, border=2)
+            self.chemistry_window, width=700, height=100)
         chemistry_container_7 = Box(
-            self.chemistry_window, width=700, height=100, border=2)
+            self.chemistry_window, width=700, height=100)
 
         # containers where the upper buttons are positioned
         chemistry_filler_box_1 = Box(chemistry_container_4,
